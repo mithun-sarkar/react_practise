@@ -8,7 +8,14 @@
     <script src="js/react.js"></script>
     <script src="js/react-dom.min.js"></script>
     <script src="js/browser.min.js"></script>
+    <style>
+        .commentText {
+            padding-bottom: 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
+
 <body>
 
     <div id="container"></div>
@@ -23,7 +30,7 @@
             },
            
             edit: function () {
-                this.setState({editin: true});
+                this.setState({editing: true}); 
             },
 
             remove: function(){
@@ -49,7 +56,7 @@
                 return (
                     <div className="commentContainer">
                         <textarea ref="newText" defautValue={this.props.children}></textarea>
-                        <button onClick="{this.save}" className="button-sucess">Save</button>
+                        <button onClick={this.save} className="button-success">Save</button>
                     </div>
                 );
             },
@@ -57,6 +64,7 @@
                 if(this.state.editing){
                     return this.renderForm();
                 } else {
+                console.log('error');
                     return this.renderNormal();
                 }
             }
@@ -66,9 +74,9 @@
             getInitialState: function () {
                 return {
                     comments: [
-                        'I like becon',
-                        'Want to get ice-cream?',
-                        'ok, we have enough comments now'
+                        'Hello worl',
+                        'Hello React',
+                        'Yes, I am ready'
                     ]
                 }
             },
@@ -93,7 +101,7 @@
                     </Comment>
                     );
             },
-            return: function () {
+            render: function () {
                 return (
                     <div className="board">
                         {this.state.comments.map(this.eachComment)}
@@ -101,7 +109,7 @@
                 );
             }
         });
-        ReactDom.render(<Board />, document.getElementById('container'));
+        ReactDOM.render(<Board />, document.getElementById('container'));
 
     </script>
 
